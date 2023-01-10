@@ -70,7 +70,6 @@ public class EnemyController : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
-            Debug.Log("Did not Hit");
             _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
             if (!_splineFollower.follow)
