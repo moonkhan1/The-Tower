@@ -111,7 +111,7 @@ public class DeviceController : IDevice
             {
 
                 bool isPictureCorrect = false;
-                player.DOJump(items.Key.transform.GetChild(0).position, 0.7f, 1, 0.2f);
+                player.DOJump(items.Key.transform.parent.position, 0.7f, 1, 0.2f);
                 if (playerDirection.z > 0 && !isPictureCorrect)
                 {
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z - 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
@@ -148,8 +148,8 @@ public class DeviceController : IDevice
                 {
                     items.Key.transform.DOKill();
                     items.Value.transform.DOKill();
-                    player.DOJump(items.Key.transform.GetChild(1).position, 0.8f, 1, 0.4f);
-
+                    player.DOJump(items.Key.transform.GetChild(0).position, 0.8f, 1, 0.4f);
+                    
                 }
 
             }

@@ -7,6 +7,7 @@ using System;
 using CASP.CameraManager;
 public class PlayerController : MonoBehaviour
 {
+    // private Transform _transform;
     private IInputReader _inputs;
     private IMover _mover;
     private IJump _jumper;
@@ -55,9 +56,9 @@ public class PlayerController : MonoBehaviour
         _playerCamera = new PlayerCameraController(this);
         _levelControl = new LevelUpController(this);
         SetupJumpProps();
+        // _transform = GetComponent<Transform>();
         isJumpingHash = Animator.StringToHash("Jump");
-        string word = "Level2";
-        Debug.Log(word.Substring(word.Length-1));
+
 
     }
 
@@ -155,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-
+        Debug.Log("Puzzle2");
         _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider, Quaternion.Euler(0f, 90f, 0f));
 
     }

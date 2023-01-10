@@ -39,9 +39,23 @@ public class GameManager : MonoBehaviour
         {
             PauseMenu?.Invoke(pauseCount);
             if(pauseCount == 0)
+            {
+                StartCoroutine(WaitForTimeScale(0));
                 pauseCount++;
+            }
             else
+            {
+                Time.timeScale = 1;
                 pauseCount--;
+            }
         }
+        // StopAllCoroutines();
+    }
+    IEnumerator WaitForTimeScale(int index)
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = index;
+        
     }
 }

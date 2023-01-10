@@ -9,11 +9,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public LayerMask _layer;
     // [SerializeField] public GameObject _cakePrfb;
     [SerializeField] public Transform _fireTransform;
-    public SplineFollower _splineFollower;
+    [SerializeField] SplineFollower _splineFollower;
     public NavMeshAgent _navMesh;
-    public PlayerController _playerController;
+    private PlayerController _playerController;
     private Rigidbody _rb;
-    private Transform _transform;
+    [SerializeField] Transform _enemyTransform;
     private float _enemySpeed = 11f;
     private Sequence _seq;
     private bool isFollowingPlayer = false;
@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         // currentState = EnemyPatrol;
         // currentState.EnterState(this);
+        _enemyTransform = GetComponent<Transform>();
     }
 
     private void Awake()
@@ -35,13 +36,13 @@ public class EnemyController : MonoBehaviour
         _splineFollower = GetComponent<SplineFollower>();
         _playerController = FindObjectOfType<PlayerController>();
         _rb = GetComponent<Rigidbody>();
-        _transform = GetComponent<Transform>();
     }
 
     void Update()
     {
         if (_playerController.GetComponent<PlayerController>().IsPlayerDead)
             _splineFollower.follow = false;
+            _navMesh.isStopped = true;
     }
 
 
@@ -49,18 +50,18 @@ public class EnemyController : MonoBehaviour
     // public void CheckForPlayer()
     // {
         RaycastHit hit;
-        if (Physics.SphereCast(_transform.position,_transform.lossyScale.x*8, _transform.forward, out hit, 25f,_layer))
+        if (Physics.SphereCast(_enemyTransform.position,_enemyTransform.lossyScale.x*8, _enemyTransform.forward, out hit, 25f,_layer))
         {
             // if (Physics.CapsuleCast(_fireTransform.position,_fireTransforms2.position,16f,_fireTransform.TransformDirection(Vector3.forward), out hit, 25f, _layer))
             // {
             Gizmos.color = Color.red;
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * hit.distance);
-            Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _transform.lossyScale.x*8);
+            Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x*8);
             if (hit.transform.gameObject.layer == 6)
             {
                 _navMesh.destination = _playerController.transform.position;
                 _splineFollower.follow = false;
-                _transform.GetComponentInChildren<ParticleSystem>().Play();
+                _enemyTransform.GetComponentInChildren<ParticleSystem>().Play();
                 
             }
 
@@ -71,12 +72,12 @@ public class EnemyController : MonoBehaviour
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
             Debug.Log("Did not Hit");
             _splineFollower.follow = true;
-            _transform.GetComponentInChildren<ParticleSystem>().Stop();
+            _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
             if (!_splineFollower.follow)
             {
                 _navMesh.destination = _splineFollower.spline.position;
-                _transform.LookAt(_splineFollower.spline.GetPointPosition(0));
-                _transform.DOMove(new Vector3(_splineFollower.spline.GetPointPosition(0).x, _splineFollower.spline.GetPointPosition(0).y, _splineFollower.spline.GetPointPosition(0).z), 2.5f)
+                _enemyTransform.LookAt(_splineFollower.spline.GetPointPosition(0));
+                _enemyTransform.DOMove(new Vector3(_splineFollower.spline.GetPointPosition(0).x, _splineFollower.spline.GetPointPosition(0).y, _splineFollower.spline.GetPointPosition(0).z), 2.5f)
                 .OnComplete(() =>
                 {
 
