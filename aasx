@@ -1,0 +1,47 @@
+[33mcommit dd1fa182114bdd9bfd381ef96272f5c19a31a957[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Sat Dec 31 15:10:31 2022 +0400
+
+    Player Annimations and camera changes added
+
+[33mcommit a6ec202da2373ebdb599766a08e9f16fdfed7861[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Fri Dec 30 14:59:24 2022 +0400
+
+    Level 1 fixes
+
+[33mcommit 4c411a8a12f88307deef63ee03ac37cd15db9194[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Wed Dec 28 01:34:30 2022 +0400
+
+    URP added
+
+[33mcommit 89787fdf1184a8c4cc0eb2d29613f2e8f4c62706[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Wed Dec 28 01:23:16 2022 +0400
+
+    Some Unity bugs fixed
+
+[33mcommit 0fdbe089a47ae756aaa17503c62c2a0e141f0808[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Tue Dec 27 02:04:48 2022 +0400
+
+    First level mechanics completed
+
+[33mcommit 2723d29ac1c7550941601fbd7a5ed7da8d6f98df[m
+Author: moonkhan1 <ayxanhesenov3105@gmail.com>
+Date:   Thu Dec 22 22:37:50 2022 +0400
+
+    Model added and base configurations completed
+
+[33mcommit d2392bed40238957ab387e932f67cee003ab1731[m
+Author: moonkhan1 <94567332+moonkhan1@users.noreply.github.com>
+Date:   Thu Dec 22 22:34:37 2022 +0400
+
+    Update .gitignore
+
+[33mcommit 9bfc6a23a09aa12d5b5e4af5c0206fd8683dca28[m
+Author: moonkhan1 <94567332+moonkhan1@users.noreply.github.com>
+Date:   Thu Dec 22 22:33:38 2022 +0400
+
+    Initial commit
