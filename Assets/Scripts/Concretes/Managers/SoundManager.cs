@@ -44,6 +44,14 @@ namespace CASP.SoundManager
             // For completely play all sounds without cutting some last of sounds
             s.source.PlayOneShot(s.Clip);
         }
+        public void Stop(string name) {
+            Sounds s = System.Array.Find(sounds, sound => sound.Name == name);
+            if (s == null)
+                return;
+            // s.source.Play();
+            // For completely play all sounds without cutting some last of sounds
+            s.source.Stop();
+        }
 
     }
 
