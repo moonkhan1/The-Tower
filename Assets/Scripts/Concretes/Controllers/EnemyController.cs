@@ -74,7 +74,7 @@ public class EnemyController : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
-            // _splineFollower.follow = true;
+            _splineFollower.follow = true;
             SoundManager.Instance.Stop("EnemySeen");
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
             if (!_splineFollower.follow)

@@ -545,6 +545,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1988161613610923026, guid: a8c99b7e1f198054bb49bc2eeb572340, type: 3}
     - target: {fileID: 500948495643030572, guid: ea99947fa4cd15742a74e0be90fcb31b, type: 3}
+      propertyPath: FinalMessage
+      value: 
+      objectReference: {fileID: 8583139644362035178, guid: fa55cd595a0668a47afbb755486751de, type: 3}
+    - target: {fileID: 500948495643030572, guid: ea99947fa4cd15742a74e0be90fcb31b, type: 3}
       propertyPath: _mainMenuMusic
       value: 
       objectReference: {fileID: 673470994}
