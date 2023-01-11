@@ -206,6 +206,7 @@ public class UIManager : MonoBehaviour
         {
 
             _nextButton.SetActive(false);
+            SoundManager.Instance.Play("MainMenuOptionSound");
             TipsList.ToList().ForEach(x => x.SetActive(false));
         }
 

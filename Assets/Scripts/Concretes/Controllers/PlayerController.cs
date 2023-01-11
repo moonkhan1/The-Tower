@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     private float _maxJumpTime = 0.75f;
     private Vector3 _direction;
     private Vector3 CameraRelativeMove;
-    private int jumpCount = 5;
-    private int realJumpCount = 5;
+    private int jumpCount = 10;
+    private int realJumpCount = 10;
     private bool isGrounded = true;
 
     int isJumpingHash;
