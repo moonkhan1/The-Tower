@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using CASP.SoundManager;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         OpenPauseMenu();
@@ -54,8 +53,9 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitForTimeScale(int index)
     {
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = index;
+        
         
     }
 }

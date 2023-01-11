@@ -6,6 +6,7 @@ public class LevelUpManager : MonoBehaviour
 {
     public static LevelUpManager Instance;
     [SerializeField] public List<GameObject> LevelTriggers;
+    [SerializeField] public List<GameObject> FinishTriggers;
     [SerializeField] public List<GameObject> LevelDoors;
 
     private void Awake() {

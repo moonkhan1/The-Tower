@@ -17,17 +17,19 @@ public class PetController : MonoBehaviour
     }
 
     private void OnEnable() {
+        if (_playerController == null) return;
         _playerController.GetComponent<PlayerController>().isAngelTriggered += CanPetFollow;
     }
 
     
 
     private void OnDisable() {
+        if (_playerController == null) return;
         _playerController.GetComponent<PlayerController>().isAngelTriggered -= CanPetFollow;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(startFollow)
             PetFollow();

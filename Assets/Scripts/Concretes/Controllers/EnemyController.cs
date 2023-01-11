@@ -4,6 +4,7 @@ using UnityEngine;
 using Dreamteck.Splines;
 using UnityEngine.AI;
 using DG.Tweening;
+using CASP.SoundManager;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] public LayerMask _layer;
@@ -40,9 +41,9 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (_playerController.GetComponent<PlayerController>().IsPlayerDead)
+        if (_playerController.GetComponent<PlayerController>().IsPlayerStop)
             _splineFollower.follow = false;
-            _navMesh.isStopped = true;
+            // _navMesh.isStopped = true;
     }
 
 
@@ -59,9 +60,12 @@ public class EnemyController : MonoBehaviour
             Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x*8);
             if (hit.transform.gameObject.layer == 6)
             {
+                SoundManager.Instance.Play("EnemySeen");
                 _navMesh.destination = _playerController.transform.position;
+                _navMesh.speed = 11;
                 _splineFollower.follow = false;
                 _enemyTransform.GetComponentInChildren<ParticleSystem>().Play();
+                 SoundManager.Instance.Play("CatSeen");
                 
             }
 
@@ -70,7 +74,7 @@ public class EnemyController : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
-            _splineFollower.follow = true;
+            // _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
             if (!_splineFollower.follow)
             {
@@ -81,6 +85,7 @@ public class EnemyController : MonoBehaviour
                 {
 
                     _splineFollower.follow = true;
+                    _navMesh.speed = 8;
                     _splineFollower.Restart(0);
                 });
 

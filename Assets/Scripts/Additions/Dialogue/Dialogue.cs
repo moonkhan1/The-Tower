@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using CASP.SoundManager;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI _text;
@@ -31,6 +31,7 @@ public class Dialogue : MonoBehaviour
     private void StartDialogue()
     {
         _index = 0;
+         SoundManager.Instance.Play("AngelVoice");
         StartCoroutine(TypeLine());
     }
 
@@ -41,6 +42,7 @@ public class Dialogue : MonoBehaviour
             _index++;
             _text.text = string.Empty;
              StartCoroutine(TypeLine());
+            
         }
 
         else

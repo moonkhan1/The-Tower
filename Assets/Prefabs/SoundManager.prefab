@@ -44,4 +44,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453086e315f28084ba78cd885933622f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - Name: MainMenuSound
+    Clip: {fileID: 8300000, guid: 727591d8cd48a54458bfb1d5e1334703, type: 3}
+    Volume: 0.569
+    Pitch: 0.99
+    Loop: 1
+    source: {fileID: 0}
+  - Name: MainMenuOptionSound
+    Clip: {fileID: 8300000, guid: d8b877fdefdaefc4687e48ef83e7ea2b, type: 3}
+    Volume: 0.497
+    Pitch: 0.95
+    Loop: 0
+    source: {fileID: 0}
+  - Name: AngelVoice
+    Clip: {fileID: 8300000, guid: 11321a8c34171884f96e5e1f529f2c38, type: 3}
+    Volume: 0.672
+    Pitch: 1.09
+    Loop: 0
+    source: {fileID: 0}
+  - Name: CatJump
+    Clip: {fileID: 8300000, guid: 2993a167cb432984eb695ebe97db5e84, type: 3}
+    Volume: 0.387
+    Pitch: 0.9
+    Loop: 0
+    source: {fileID: 0}
+  - Name: CatStand
+    Clip: {fileID: 8300000, guid: 54a20baef2dd78a4d84ea373fabcd815, type: 3}
+    Volume: 0.612
+    Pitch: 1.27
+    Loop: 0
+    source: {fileID: 0}
+  - Name: CatSeen
+    Clip: {fileID: 8300000, guid: e4eabd8f44136c148aebade1d0c85192, type: 3}
+    Volume: 0.552
+    Pitch: 1.18
+    Loop: 1
+    source: {fileID: 0}
+  - Name: GameSound
+    Clip: {fileID: 8300000, guid: e2b69512b4eb6eb498923adefec9bd78, type: 3}
+    Volume: 0.537
+    Pitch: 0.94
+    Loop: 1
+    source: {fileID: 0}
+  - Name: Amulet
+    Clip: {fileID: 8300000, guid: b329fcbf422ef4c40b94921626d77054, type: 3}
+    Volume: 0.417
+    Pitch: 0.87
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Magic
+    Clip: {fileID: 8300000, guid: 74acf94521d95804ba7a21b78bf6b145, type: 3}
+    Volume: 0.47
+    Pitch: 0.91
+    Loop: 0
+    source: {fileID: 0}
+  - Name: StoneRoundSound
+    Clip: {fileID: 8300000, guid: d5b4ff30a4033cf4f8e905d3c951807a, type: 3}
+    Volume: 0.432
+    Pitch: 0.91
+    Loop: 1
+    source: {fileID: 0}
+  - Name: StoneSolveSound
+    Clip: {fileID: 8300000, guid: b8942175dcb9fd54baaaba488305de6d, type: 3}
+    Volume: 0.432
+    Pitch: 0.91
+    Loop: 0
+    source: {fileID: 0}
+  - Name: Death
+    Clip: {fileID: 8300000, guid: 169d9315a486c88459d7ea70822ed123, type: 3}
+    Volume: 0.874
+    Pitch: 1.94
+    Loop: 0
+    source: {fileID: 0}
+  - Name: EnemySeen
+    Clip: {fileID: 8300000, guid: 987c1cd05b4a5704aa30ebf4da44fd26, type: 3}
+    Volume: 0.65
+    Pitch: 1.68
+    Loop: 0
+    source: {fileID: 0}

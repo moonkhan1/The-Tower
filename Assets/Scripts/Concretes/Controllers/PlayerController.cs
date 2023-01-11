@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using DG.Tweening;
 using System;
 using CASP.CameraManager;
+using CASP.SoundManager;
 public class PlayerController : MonoBehaviour
 {
     // private Transform _transform;
@@ -36,11 +37,12 @@ public class PlayerController : MonoBehaviour
     int isJumpingHash;
     bool isJumpAnimating = false;
     bool isJump = false;
-    private bool isDead = false;
-    public bool IsPlayerDead => isDead;
+    private bool isStop = false;
+    public bool IsPlayerStop => isStop;
     public event System.Action<int> IsJumpedAction;
     public event System.Action isPlayerDead;
     public event System.Action isAngelTriggered;
+    public event System.Action isFinished;
     public DeviceController _deviceCont;
     int LevelTwoPic = 0;
 
@@ -66,31 +68,22 @@ public class PlayerController : MonoBehaviour
     {
         _devices.isPicTriggered += isPicCorrect;
         _levelControl.isLeveltriggered += LevelUpStats;
+        _levelControl.isFinishtriggered += Finished;
     }
     private void OnDisable()
     {
         _devices.isPicTriggered -= isPicCorrect;
         _levelControl.isLeveltriggered -= LevelUpStats;
+        _levelControl.isFinishtriggered -= Finished;
     }
 
-    private void LevelUpStats(int index)
-    {
-        realJumpCount = realJumpCount + (index*6);
-         jumpCount = realJumpCount;
-        IsJumpedAction?.Invoke(realJumpCount);
-    }
-
-    private void isPicCorrect()
-    {
-        Debug.Log("Tamam");
-        DeviceManager.Instance.Level2Platforms.SetActive(true);
-        CameraManager.Instance.OpenCamera("PlatformCamera", 0.4f, CameraEaseStates.EaseOut);
-        
-    }
+   
 
     void Update()
     {
-        if (!isDead)
+        // if(_direction.magnitude == 0.05f)
+            // SoundManager.Instance.Play("CatStand");
+        if (!isStop)
         {
             _direction = _inputs.Direction;
             HandleGravity();
@@ -103,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead)
+        if (!isStop)
         {
         _mover.MoveAction(CameraRelativeMove, _speed);
         _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
@@ -113,7 +106,7 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (!isDead)
+        if (!isStop)
         {
         _animation.MoveAnimation(_inputs.isMovingPressed);
         _animation.RunAnimation(_inputs.isRunPressed);
@@ -147,7 +140,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             isPlayerDead?.Invoke();
-            isDead = true;
+            isStop = true;
+            SoundManager.Instance.Play("Death");
 
         }
 
@@ -159,6 +153,25 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Puzzle2");
         _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider, Quaternion.Euler(0f, 90f, 0f));
 
+    }
+     private void Finished()
+    {
+        isStop = true;
+    }
+
+    private void LevelUpStats(int index)
+    {
+        realJumpCount = realJumpCount + (index*6);
+         jumpCount = realJumpCount;
+        IsJumpedAction?.Invoke(realJumpCount);
+    }
+
+    private void isPicCorrect()
+    {
+        Debug.Log("Tamam");
+        DeviceManager.Instance.Level2Platforms.SetActive(true);
+        CameraManager.Instance.OpenCamera("PlatformCamera", 0.4f, CameraEaseStates.EaseOut);
+        
     }
    
     public void HandleMove()
@@ -190,6 +203,7 @@ public class PlayerController : MonoBehaviour
         {
             // _animation.JumpAnimation(true);
             _animation._animator.SetBool(isJumpingHash, true);
+            SoundManager.Instance.Play("CatJump");
             isJumpAnimating = true;
             isJump = true;
             jumpCount--;

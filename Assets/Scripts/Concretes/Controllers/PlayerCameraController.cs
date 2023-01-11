@@ -8,26 +8,9 @@ public class PlayerCameraController : IPlayerCamera
     Collider _playerCollider;
 
 
-
-    // public Vector3 ForwardRelativeToCamera;
-    // public Vector3 RightRelativeToCamera;
-
-    void Start()
-    {
-        
-    }
-
     public PlayerCameraController(PlayerController playerController)
     {
         _playerCollider = playerController.GetComponent<Collider>();
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override void TriggerForCamera(Collider other)

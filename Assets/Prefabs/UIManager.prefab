@@ -51,3 +51,13 @@ MonoBehaviour:
   RestartButton: {fileID: 0}
   Dialogue: {fileID: 0}
   PausePanel: {fileID: 0}
+  SettingsPanel: {fileID: 0}
+  PauseMenuItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  TipsList:
+  - {fileID: 0}
+  - {fileID: 0}
+  _nextButton: {fileID: 0}
+  _gameMusic: {fileID: 0}

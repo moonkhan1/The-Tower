@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Linq;
 using TMPro;
+using CASP.SoundManager;
 public class DeviceController : IDevice
 {
     [SerializeField] Transform _movePosition;
@@ -30,14 +31,17 @@ public class DeviceController : IDevice
             {
                 items.Value.transform.DOMove(items.Value.transform.GetChild(0).position, 2f)
                 .SetEase(Ease.Linear);
+                SoundManager.Instance.Play("StoneSolveSound");
                 Debug.Log("Touched Gate");
             }
 
             if (other.name == items.Key.name && items.Key.name.Contains("Rotate"))
             {
                 items.Value.transform.GetComponentInChildren<ParticleSystem>().Play();
+                SoundManager.Instance.Play("Magic");
                 items.Value.transform.DOMoveY(items.Value.transform.GetChild(0).position.y, 2f).OnComplete(() =>
                 {
+                    
                     items.Value.GetComponentInChildren<ParticleSystem>().Stop();
                 });
                 Debug.Log("Touched GateKeyIron");
@@ -74,7 +78,7 @@ public class DeviceController : IDevice
                     This.DOJump(other.transform.GetChild(0).position,0.7f,1, 0.6f).OnComplete(() =>
                     {
                         This.rotation = other.transform.GetChild(0).rotation;
-                        // other.GetComponent<Collider>().isTrigger = false;
+                        SoundManager.Instance.Play("Amulet");
                     });
 
                 }
@@ -87,6 +91,7 @@ public class DeviceController : IDevice
                 foreach (var item in DeviceManager.Instance.itemsDevices.Where(u => u.Key.name.Contains("Amulet")))
                 {
                     item.Value.transform.DOMoveX(item.Value.transform.GetChild(0).position.x, 2f);
+                    SoundManager.Instance.Play("Magic");
                     item.Key.transform.GetComponentInChildren<ParticleSystem>().Play();
                     item.Value.transform.GetComponentInChildren<ParticleSystem>().Play();
                 }
@@ -114,6 +119,7 @@ public class DeviceController : IDevice
                 player.DOJump(items.Key.transform.parent.position, 0.7f, 1, 0.2f);
                 if (playerDirection.z > 0 && !isPictureCorrect)
                 {
+                    SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z - 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y - 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -121,6 +127,7 @@ public class DeviceController : IDevice
                 }
                 if (playerDirection.z < 0 && !isPictureCorrect)
                 {
+                     SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z + 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y + 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -137,6 +144,7 @@ public class DeviceController : IDevice
                 System.Math.Truncate(Mathf.Abs(u.transform.localEulerAngles.y)) >= isRotationCorrect.eulerAngles.y - 4
                 && System.Math.Truncate(Mathf.Abs(u.transform.localEulerAngles.y)) <= isRotationCorrect.eulerAngles.y + 4)))
                 {
+                    SoundManager.Instance.Play("StoneSolveSound");
                     Debug.Log("Correct");
                     isPictureCorrect = true;
                     items.Key.transform.DOKill();
