@@ -214,7 +214,6 @@ public class UIManager : MonoBehaviour
     }
     IEnumerator WaitAndShowTips()
     {
-        Debug.Log("Show");
         yield return new WaitForSeconds(2f);
         TipsList.ToList().ForEach(x => x.SetActive(true));
         _nextButton.SetActive(true);

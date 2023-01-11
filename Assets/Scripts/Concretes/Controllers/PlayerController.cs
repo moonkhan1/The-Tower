@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
 
         _devices.WhenTriggerInteractable(other);
         _playerCamera.TriggerForCamera(other);
+        _levelControl.IsLeveltriggered(other);
          if (other.gameObject.tag == "AngelChat")
         {
             isAngelTriggered?.Invoke();
@@ -128,7 +129,6 @@ public class PlayerController : MonoBehaviour
     {
         _month.GetItemToMonth(other.collider);
 
-        _levelControl.IsLeveltriggered(other.collider);
 
 
 
@@ -168,7 +168,6 @@ public class PlayerController : MonoBehaviour
 
     private void isPicCorrect()
     {
-        Debug.Log("Tamam");
         DeviceManager.Instance.Level2Platforms.SetActive(true);
         CameraManager.Instance.OpenCamera("PlatformCamera", 0.4f, CameraEaseStates.EaseOut);
         
