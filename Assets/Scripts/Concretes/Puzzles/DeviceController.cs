@@ -114,12 +114,13 @@ public class DeviceController : IDevice
         {
             if (other.name == items.Key.name && items.Key.name.Contains("Roll"))
             {
-
                 bool isPictureCorrect = false;
                 player.DOJump(items.Key.transform.parent.position, 0.7f, 1, 0.2f);
+                     SoundManager.Instance.Play("StoneRoundSound");
                 if (playerDirection.z > 0 && !isPictureCorrect)
                 {
-                    SoundManager.Instance.Play("StoneRoundSound");
+                Debug.Log("ROll");
+                    // SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z - 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y - 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -127,7 +128,6 @@ public class DeviceController : IDevice
                 }
                 if (playerDirection.z < 0 && !isPictureCorrect)
                 {
-                     SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z + 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y + 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)

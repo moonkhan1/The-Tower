@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
- void OnDrawGizmos() {
+  void OnDrawGizmos() {
     // public void CheckForPlayer()
     // {
         RaycastHit hit;
@@ -74,7 +74,7 @@ public class EnemyController : MonoBehaviour
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
-            _splineFollower.follow = true;
+            // _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
             // SoundManager.Instance._enemySound.Stop();
             if (!_splineFollower.follow)
