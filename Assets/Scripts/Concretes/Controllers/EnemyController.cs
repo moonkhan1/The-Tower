@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
             Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x*8);
             if (hit.transform.gameObject.layer == 6)
             {
-                SoundManager.Instance._enemySound.Play();
+                // SoundManager.Instance._enemySound.Play();
                 _navMesh.destination = _playerController.transform.position;
                 _navMesh.speed = 11;
                 _splineFollower.follow = false;
@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
             _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
-            SoundManager.Instance._enemySound.Stop();
+            // SoundManager.Instance._enemySound.Stop();
             if (!_splineFollower.follow)
             {
                 _navMesh.destination = _splineFollower.spline.position;
