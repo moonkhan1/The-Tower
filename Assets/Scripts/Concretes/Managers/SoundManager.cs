@@ -9,6 +9,7 @@ namespace CASP.SoundManager
     {
         public Sounds[] sounds;
         public static SoundManager Instance;
+        [SerializeField] public AudioSource _enemySound;
 
         private void Awake() {
             if (Instance == null) {
@@ -42,6 +43,7 @@ namespace CASP.SoundManager
                 return;
             // s.source.Play();
             // For completely play all sounds without cutting some last of sounds
+            s.source.mute = false;
             s.source.PlayOneShot(s.Clip);
         }
         public void Stop(string name) {
@@ -50,7 +52,7 @@ namespace CASP.SoundManager
                 return;
             // s.source.Play();
             // For completely play all sounds without cutting some last of sounds
-            s.source.Stop();
+            s.source.mute = true;
         }
 
     }

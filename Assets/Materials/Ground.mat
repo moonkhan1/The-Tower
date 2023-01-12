@@ -27,6 +27,7 @@ Material:
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING
   - TCP2_RIM_LIGHTING_LIGHTMASK
+  - TCP2_SHADOW_TEXTURE
   - TCP2_SPECULAR
   - _ALPHATEST_ON
   - _NORMALMAP
@@ -109,7 +110,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 4d11730289d75bd40ab12264cc9bc3dd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 12c90bb3e747eba479e1849e2a3c71bc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -136,7 +137,7 @@ Material:
     - _Cull: 0
     - _Cutoff: 0.361
     - _DetailAlbedoMapScale: 0.12
-    - _DetailNormalMapScale: 1.13
+    - _DetailNormalMapScale: 1.15
     - _DirectIntensityOutline: 1
     - _DstBlend: 0
     - _EmissionChannel: 4
@@ -185,7 +186,7 @@ Material:
     - _RimStrength: 0.5
     - _Shininess: 0
     - _SingleIndirectColor: 0
-    - _Smoothness: 0.518
+    - _Smoothness: 0.17
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecBlend: 1
@@ -216,7 +217,7 @@ Material:
     - _UseReflections: 0
     - _UseRim: 1
     - _UseRimLightMask: 1
-    - _UseShadowTexture: 0
+    - _UseShadowTexture: 1
     - _UseSpecular: 1
     - _WorkflowMode: 0
     - _ZWrite: 1

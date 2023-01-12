@@ -123,7 +123,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _IndirectIntensity: 1
+    - _IndirectIntensity: 0.44
     - _IndirectIntensityOutline: 0
     - _MatCapMaskChannel: 0
     - _MatCapType: 0
@@ -145,13 +145,13 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.298
-    - _RampThreshold: 0.01
+    - _RampSmoothing: 0.2
+    - _RampThreshold: 0.82
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
-    - _ReflectionSmoothness: 0.68
+    - _ReflectionSmoothness: 0.8
     - _RenderingMode: 0
     - _RimMax: 1.43
     - _RimMin: 1.22
@@ -160,7 +160,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularMapType: 0
-    - _SpecularRoughness: 0.269
+    - _SpecularRoughness: 0.12
     - _SpecularToonSize: 0.25
     - _SpecularToonSmoothness: 0.05
     - _SpecularType: 0

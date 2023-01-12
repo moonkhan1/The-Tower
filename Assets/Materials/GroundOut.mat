@@ -135,9 +135,9 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 0
-    - _Cutoff: 0.443
-    - _DetailAlbedoMapScale: 0.12
-    - _DetailNormalMapScale: 2
+    - _Cutoff: 0.41
+    - _DetailAlbedoMapScale: 1.08
+    - _DetailNormalMapScale: 1.44
     - _DirectIntensityOutline: 1
     - _DstBlend: 0
     - _EmissionChannel: 4
@@ -186,7 +186,7 @@ Material:
     - _RimStrength: 0.5
     - _Shininess: 0
     - _SingleIndirectColor: 0
-    - _Smoothness: 0.428
+    - _Smoothness: 0.11
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecBlend: 1
