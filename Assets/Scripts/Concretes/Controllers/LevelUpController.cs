@@ -33,10 +33,10 @@ public class LevelUpController : ILevelControl
             isFinishtriggered?.Invoke();
             UIManager.Instance.FinalMessage.SetActive(true);
         }
-        if (LevelUpManager.Instance.LevelTriggers.Any(u => u.name == "Level1"))
+        if (other.name ==  "UITrigger")
         {
-            UIManager.Instance.StaminaUIs.SetActive(true);
             other.gameObject.SetActive(false);
+            UIManager.Instance.StaminaUIs.SetActive(true);
             Image panelImg = UIManager.Instance.StaminaUIs.GetComponent<Image>();
             panelImg.color = new Color(0, 0, 0, 0);
             DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 255), 0.8f);
