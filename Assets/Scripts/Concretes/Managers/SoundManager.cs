@@ -13,7 +13,7 @@ namespace CASP.SoundManager
         [SerializeField] public AudioSource catRun;
         [SerializeField] public AudioSource catWalk;
         [SerializeField] public AudioSource catStand;
-
+        [SerializeField] public AudioSource stoneRoll;
         private void Awake() {
             if (Instance == null) {
                 Instance = this;

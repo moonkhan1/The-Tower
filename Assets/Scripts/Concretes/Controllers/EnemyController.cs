@@ -61,11 +61,11 @@ public class EnemyController : MonoBehaviour
             if (hit.transform.gameObject.layer == 6)
             {
                 // SoundManager.Instance._enemySound.Play();
+                 SoundManager.Instance._enemySound.Play();
                 _navMesh.destination = _playerController.transform.position;
                 _navMesh.speed = 11;
                 _splineFollower.follow = false;
                 _enemyTransform.GetComponentInChildren<ParticleSystem>().Play();
-                 SoundManager.Instance.Play("CatSeen");
                 
             }
 

@@ -35,6 +35,7 @@ Transform:
   - {fileID: 2248471567881433183}
   - {fileID: 6522731038228042683}
   - {fileID: 2248471567154620988}
+  - {fileID: 7417771393774570057}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -114,6 +115,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7343815947986442922, guid: 76b1bdc0f226c384c9cdc13ee9c2ccab, type: 3}
   m_PrefabInstance: {fileID: 2065848165560933600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2248471566520745632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2248471567399531225}
+    m_Modifications:
+    - target: {fileID: 8774449350646707414, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_Name
+      value: StoneRoll
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707432, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707432, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d5b4ff30a4033cf4f8e905d3c951807a, type: 3}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+--- !u!4 &7417771393774570057 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+  m_PrefabInstance: {fileID: 2248471566520745632}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2583427294898131225
 PrefabInstance:
@@ -250,6 +321,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySeen
       objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707432, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774449350646707432, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4dc5ad4fcd8203f49af6a4930054eb26, type: 3}
     - target: {fileID: 8774449350646707433, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
       propertyPath: m_RootOrder
       value: 5

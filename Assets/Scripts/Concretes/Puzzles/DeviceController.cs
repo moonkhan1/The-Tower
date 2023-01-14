@@ -41,7 +41,7 @@ public class DeviceController : IDevice
                 SoundManager.Instance.Play("Magic");
                 items.Value.transform.DOMoveY(items.Value.transform.GetChild(0).position.y, 2f).OnComplete(() =>
                 {
-                    
+
                     items.Value.GetComponentInChildren<ParticleSystem>().Stop();
                 });
                 Debug.Log("Touched GateKeyIron");
@@ -73,9 +73,9 @@ public class DeviceController : IDevice
             {
                 if (This.transform.parent == null)
                 {
-                    if(other.tag == This.tag)
+                    if (other.tag == This.tag)
                         DeviceManager.Instance.Level1AmuletCount++;
-                    This.DOJump(other.transform.GetChild(0).position,0.7f,1, 0.6f).OnComplete(() =>
+                    This.DOJump(other.transform.GetChild(0).position, 0.7f, 1, 0.6f).OnComplete(() =>
                     {
                         This.rotation = other.transform.GetChild(0).rotation;
                         SoundManager.Instance.Play("Amulet");
@@ -116,18 +116,18 @@ public class DeviceController : IDevice
             {
                 bool isPictureCorrect = false;
                 player.DOJump(items.Key.transform.parent.position, 0.7f, 1, 0.2f);
-                     SoundManager.Instance.Play("StoneRoundSound");
                 if (playerDirection.z > 0 && !isPictureCorrect)
                 {
-                Debug.Log("ROll");
-                    // SoundManager.Instance.Play("StoneRoundSound");
+                    
+                    // SoundManager.Instance.stoneRoll.Play();
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z - 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
-                    items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y - 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
+                    items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y - 3, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                 }
                 if (playerDirection.z < 0 && !isPictureCorrect)
                 {
+                    // SoundManager.Instance.stoneRoll.Play();
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z + 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y + 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -157,7 +157,7 @@ public class DeviceController : IDevice
                     items.Key.transform.DOKill();
                     items.Value.transform.DOKill();
                     player.DOJump(items.Key.transform.GetChild(0).position, 0.8f, 1, 0.4f);
-                    
+
                 }
 
             }

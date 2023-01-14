@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.tag == "Enemy")
         {
+            SoundManager.Instance.Play("CatSeen");
             isPlayerDead?.Invoke();
             isStop = true;
             SoundManager.Instance.Play("Death");
