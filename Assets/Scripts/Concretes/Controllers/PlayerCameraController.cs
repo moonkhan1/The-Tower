@@ -13,9 +13,10 @@ public class PlayerCameraController : IPlayerCamera
         _playerCollider = playerController.GetComponent<Collider>();
     }
 
+
     public override void TriggerForCamera(Collider other)
     {
-        foreach (KeyValuePair<GameObject, GameObject> items in CameraList.Instance.CameraListControl)
+         foreach (KeyValuePair<GameObject, GameObject> items in CameraList.Instance.CameraListControl)
         {
         if(other.name == items.Key.name )
         {

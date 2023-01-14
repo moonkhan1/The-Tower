@@ -25,12 +25,9 @@ Material:
   m_ValidKeywords:
   - _ALPHATEST_ON
   - _CLEARCOAT
-  - _DETAIL_SCALED
-  - _EMISSION
-  - _METALLICSPECGLOSSMAP
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
-  m_LightmapFlags: 1
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 2450
@@ -41,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 92317234b870c84429c936fcac94bbf5, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb5ae40e3b18e884888b8a958f5533a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -53,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 92317234b870c84429c936fcac94bbf5, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -65,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 92317234b870c84429c936fcac94bbf5, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb5ae40e3b18e884888b8a958f5533a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -105,7 +102,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 2800000, guid: 92317234b870c84429c936fcac94bbf5, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -131,7 +128,7 @@ Material:
     - _ClearCoatSmoothness: 0.209
     - _Cull: 0
     - _Cutoff: 0.44
-    - _DetailAlbedoMapScale: 1.08
+    - _DetailAlbedoMapScale: 1.25
     - _DetailNormalMapScale: 1
     - _DirectIntensityOutline: 1
     - _DstBlend: 0
@@ -206,7 +203,7 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 0.76862746}
+    - _BaseColor: {r: 0.99215686, g: 0.80784315, b: 0.80784315, a: 1}
     - _Color: {r: 0.15094337, g: 0.12445707, b: 0.12445707, a: 1}
     - _EmissionColor: {r: 0.43527526, g: 0.23385377, b: 0.06486455, a: 1}
     - _HColor: {r: 1, g: 0.0037735105, b: 0.7260595, a: 1}

@@ -10,27 +10,28 @@ using System;
 
 public class MainMenuManager : MonoBehaviour
 {
+   public static MainMenuManager Instance;
     [SerializeField] GameObject _backGround;
     [SerializeField] GameObject _nameOftheGame;
     [SerializeField] GameObject[] _menuItems;
     [SerializeField] GameObject SettingsPanel;
        [SerializeField] AudioSource _mainMenuMusic;
+       [SerializeField] AudioSource _gameMusic;
     
     void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+        DontDestroyOnLoad(this);
         _mainMenuMusic.Play();
     }
-    private void OnEnable() {
-    }
-    private void OnDisable() {
-        UIManager.Instance.isGameStarted -= StopMainMenuMusic;
-    }
+ 
 
    
 
     void Start()
     {
-        UIManager.Instance.isGameStarted += StopMainMenuMusic;
+        
         Image _backGroundImg = _backGround.GetComponent<Image>();
         _backGroundImg.color = new Color(0, 0, 0, 255);
         DOTween.To(() => _backGroundImg.color, x => _backGroundImg.color = x, new Color32(255, 255, 255, 255), 1f).OnComplete(()=>{
@@ -60,6 +61,7 @@ public class MainMenuManager : MonoBehaviour
  private void StopMainMenuMusic()
     {
         _mainMenuMusic.Stop();
+        _gameMusic.Play();
     }
     public void OpenSettings()
     {
@@ -87,6 +89,18 @@ public class MainMenuManager : MonoBehaviour
     public void onMouseHoverPlaySound()
     {
         SoundManager.Instance.Play("MainMenuOptionSound");
+    }
+
+       public void PlayGame()
+    {
+        Image _backGroundImg = _backGround.GetComponent<Image>();
+        DOTween.To(() => _backGroundImg.color, x => _backGroundImg.color = x, new Color32(25, 25, 25, 255), 1f).OnComplete(()=>{
+        GameManager.Instance.LoadScene("Game");
+        StopMainMenuMusic();
+        });
+        
+        // TipsList.ToList().ForEach(x => x.SetActive(true));
+
     }
 
 

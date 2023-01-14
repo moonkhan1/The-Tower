@@ -61,3 +61,5 @@ MonoBehaviour:
   - {fileID: 0}
   _nextButton: {fileID: 0}
   _gameMusic: {fileID: 0}
+  FinalMessage: {fileID: 0}
+  RunBar: {fileID: 0}

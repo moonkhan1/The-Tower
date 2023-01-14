@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
         {
             // if (Physics.CapsuleCast(_fireTransform.position,_fireTransforms2.position,16f,_fireTransform.TransformDirection(Vector3.forward), out hit, 25f, _layer))
             // {
-            Gizmos.color = Color.red;
+            Gizmos.color = new Color(32,32,32,0);
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * hit.distance);
             Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x*8);
             if (hit.transform.gameObject.layer == 6)
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            Gizmos.color = Color.blue;
+            Gizmos.color = new Color(32,32,32,0);
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
             // _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();

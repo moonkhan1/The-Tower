@@ -113,7 +113,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 0
-    - _Cutoff: 0.395
+    - _Cutoff: 0.333
     - _DetailAlbedoMapScale: 0
     - _DetailNormalMapScale: 1
     - _DirectIntensityOutline: 1
@@ -125,7 +125,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _IndirectIntensity: 0.391
+    - _IndirectIntensity: 0.033
     - _IndirectIntensityOutline: 0
     - _MatCapMaskChannel: 0
     - _MatCapType: 0
@@ -147,8 +147,8 @@ Material:
     - _RampBandsSmoothing: 0.1
     - _RampOffset: 0
     - _RampScale: 1
-    - _RampSmoothing: 0.239
-    - _RampThreshold: 0.654
+    - _RampSmoothing: 0.733
+    - _RampThreshold: 0.828
     - _RampType: 0
     - _ReceiveShadows: 1
     - _ReceiveShadowsOff: 1
@@ -156,7 +156,7 @@ Material:
     - _ReflectionSmoothness: 0.303
     - _RenderingMode: 0
     - _RimMax: 2
-    - _RimMin: 1.15
+    - _RimMin: 2
     - _SingleIndirectColor: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0

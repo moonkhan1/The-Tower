@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using CASP.SoundManager;
 public class AnimationController : IAnimation
 {
     public Animator _animator{get;set;}
@@ -20,9 +20,12 @@ public class AnimationController : IAnimation
         if(isWalking)
         {
             _animator.SetBool("Walking", true);
+            SoundManager.Instance.catStand.Play();
         }
         else{
             _animator.SetBool("Walking", false);
+            SoundManager.Instance.catWalk.Play();
+           
         }
 
         
@@ -33,9 +36,11 @@ public class AnimationController : IAnimation
         if(isRunning)
         {
             _animator.SetBool("isRunning", true);
+             SoundManager.Instance.catWalk.Stop();
         }
         else{
             _animator.SetBool("isRunning", false);
+             SoundManager.Instance.catRun.Play();
         }
     }
 

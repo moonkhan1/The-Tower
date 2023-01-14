@@ -79,7 +79,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: e4eabd8f44136c148aebade1d0c85192, type: 3}
     Volume: 0.552
     Pitch: 1.18
-    Loop: 1
+    Loop: 0
     source: {fileID: 0}
   - Name: GameSound
     Clip: {fileID: 8300000, guid: e2b69512b4eb6eb498923adefec9bd78, type: 3}
@@ -103,7 +103,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: d5b4ff30a4033cf4f8e905d3c951807a, type: 3}
     Volume: 0.432
     Pitch: 0.91
-    Loop: 1
+    Loop: 0
     source: {fileID: 0}
   - Name: StoneSolveSound
     Clip: {fileID: 8300000, guid: b8942175dcb9fd54baaaba488305de6d, type: 3}
@@ -123,3 +123,13 @@ MonoBehaviour:
     Pitch: 1.68
     Loop: 0
     source: {fileID: 0}
+  - Name: CatFoot
+    Clip: {fileID: 8300000, guid: 9200498f420992a499b0ca47204dc9a8, type: 3}
+    Volume: 0.49
+    Pitch: 1.06
+    Loop: 0
+    source: {fileID: 0}
+  _enemySound: {fileID: 8774449350646707432, guid: acf087c12b7ac994ba0d0afe36d3f5ba, type: 3}
+  catRun: {fileID: 1890511055011889883, guid: edaa75964e3d1ba49862c61d3bb20044, type: 3}
+  catWalk: {fileID: 6450800795560511571, guid: d98862e8afbafe04d839ccfadf9b3882, type: 3}
+  catStand: {fileID: 7343815947986442923, guid: 76b1bdc0f226c384c9cdc13ee9c2ccab, type: 3}

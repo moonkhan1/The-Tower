@@ -10,6 +10,9 @@ namespace CASP.SoundManager
         public Sounds[] sounds;
         public static SoundManager Instance;
         [SerializeField] public AudioSource _enemySound;
+        [SerializeField] public AudioSource catRun;
+        [SerializeField] public AudioSource catWalk;
+        [SerializeField] public AudioSource catStand;
 
         private void Awake() {
             if (Instance == null) {

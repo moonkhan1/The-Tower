@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     private float _maxJumpTime = 0.75f;
     private Vector3 _direction;
     private Vector3 CameraRelativeMove;
-    private int jumpCount = 10;
-    private int realJumpCount = 10;
     private bool isGrounded = true;
 
     int isJumpingHash;
@@ -43,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public event System.Action isPlayerDead;
     public event System.Action isAngelTriggered;
     public event System.Action isFinished;
+    public event System.Action<bool> isRunning;
     public DeviceController _deviceCont;
     int LevelTwoPic = 0;
 
@@ -67,22 +66,19 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _devices.isPicTriggered += isPicCorrect;
-        _levelControl.isLeveltriggered += LevelUpStats;
         _levelControl.isFinishtriggered += Finished;
     }
     private void OnDisable()
     {
         _devices.isPicTriggered -= isPicCorrect;
-        _levelControl.isLeveltriggered -= LevelUpStats;
         _levelControl.isFinishtriggered -= Finished;
     }
 
-   
+
 
     void Update()
     {
-        // if(_direction.magnitude == 0.05f)
-            // SoundManager.Instance.Play("CatStand");
+
         if (!isStop)
         {
             _direction = _inputs.Direction;
@@ -98,20 +94,31 @@ public class PlayerController : MonoBehaviour
     {
         if (!isStop)
         {
-        _mover.MoveAction(CameraRelativeMove, _speed);
-        _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
-        if (_inputs.isRunPressed)
-            _mover.RunAction(CameraRelativeMove, _runSpeed);
-        }
-    }
-    private void LateUpdate()
-    {
-        if (!isStop)
-        {
-        _animation.MoveAnimation(_inputs.isMovingPressed);
-        _animation.RunAnimation(_inputs.isRunPressed);
-        }
+            _mover.MoveAction(CameraRelativeMove, _speed);
+            _animation.MoveAnimation(_inputs.isMovingPressed);
+            _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
+            if (_inputs.isRunPressed)
+            {
+                if (UIManager.Instance.RunBar.fillAmount > 0.05f)
+                {
 
+                    isRunning?.Invoke(true);
+                    _mover.RunAction(CameraRelativeMove, _runSpeed);
+                    _animation.RunAnimation(true);
+
+                }
+                if (UIManager.Instance.RunBar.fillAmount < 0.05f)
+                    _animation.RunAnimation(false);
+            }
+            else
+            {
+                _animation.RunAnimation(false);
+                isRunning?.Invoke(false);
+            }
+
+
+
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -119,7 +126,7 @@ public class PlayerController : MonoBehaviour
         _devices.WhenTriggerInteractable(other);
         _playerCamera.TriggerForCamera(other);
         _levelControl.IsLeveltriggered(other);
-         if (other.gameObject.tag == "AngelChat")
+        if (other.gameObject.tag == "AngelChat")
         {
             isAngelTriggered?.Invoke();
         }
@@ -128,13 +135,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         _month.GetItemToMonth(other.collider);
-
-
-
-
         if (other.gameObject.tag == "Ground")
         {
-           
+
             isGrounded = true;
         }
         if (other.gameObject.tag == "Enemy")
@@ -144,8 +147,6 @@ public class PlayerController : MonoBehaviour
             SoundManager.Instance.Play("Death");
 
         }
-
-       
     }
 
     private void OnCollisionStay(Collision other)
@@ -154,25 +155,20 @@ public class PlayerController : MonoBehaviour
         _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider, Quaternion.Euler(0f, 90f, 0f));
 
     }
-     private void Finished()
+    private void Finished()
     {
         isStop = true;
     }
 
-    private void LevelUpStats(int index)
-    {
-        realJumpCount = realJumpCount + (index*6);
-         jumpCount = realJumpCount;
-        IsJumpedAction?.Invoke(realJumpCount);
-    }
+   
 
     private void isPicCorrect()
     {
         DeviceManager.Instance.Level2Platforms.SetActive(true);
         CameraManager.Instance.OpenCamera("PlatformCamera", 0.4f, CameraEaseStates.EaseOut);
-        
+
     }
-   
+
     public void HandleMove()
     {
         Vector3 ForwardRelativeToCamera = Camera.main.transform.forward;
@@ -198,20 +194,17 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        if (!isJump && _inputs.isJumpPressed && jumpCount != 0 && isGrounded)
+        if (!isJump && _inputs.isJumpPressed && isGrounded)
         {
             // _animation.JumpAnimation(true);
             _animation._animator.SetBool(isJumpingHash, true);
             SoundManager.Instance.Play("CatJump");
             isJumpAnimating = true;
             isJump = true;
-            jumpCount--;
             _jumper.Jump(_inputs.isJumpPressed, _jumpForce);
             isGrounded = false;
-            // realJumpCount--;
-            IsJumpedAction?.Invoke(jumpCount);
         }
-        else if (isJump && !_inputs.isJumpPressed && jumpCount != 0 && isGrounded)
+        else if (isJump && !_inputs.isJumpPressed && isGrounded)
         {
             isJump = false;
         }
@@ -248,6 +241,8 @@ public class PlayerController : MonoBehaviour
             _direction.y = nextYVelocity;
         }
     }
+
+
 
 
 }

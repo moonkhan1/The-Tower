@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Cinemachine;
+using DG.Tweening;
 
 namespace CASP.CameraManager
 {
@@ -16,6 +17,8 @@ namespace CASP.CameraManager
         // [SerializeField] List<CinemachineVirtualCamera> VCamList;
         Dictionary<string, CinemachineVirtualCamera> Cams = new Dictionary<string, CinemachineVirtualCamera>();
         [SerializeField] List<StructCam> Camslist;
+        [SerializeField] public CinemachineVirtualCamera EnteranceCamera;
+        [SerializeField] public CinemachineVirtualCamera EnteranceCatCamera;
         private void Awake() {
             if (Instance == null) {
                 Instance = this;
@@ -23,6 +26,12 @@ namespace CASP.CameraManager
         }
         void Start()
         {
+            EnteranceCamera.transform.DOMoveY(EnteranceCamera.transform.GetChild(0).localPosition.y-70, 2f).OnComplete(()=>
+            {
+                EnteranceCamera.transform.DOMoveZ(EnteranceCamera.transform.position.z + 45, 1f).OnComplete(()=>{
+                    OpenCamera(EnteranceCatCamera.name, 0.8f, CameraEaseStates.EaseIn);
+                });
+            });
             foreach (Transform camTransform in transform)
             {
                 if (camTransform.TryGetComponent<CinemachineVirtualCamera>(out CinemachineVirtualCamera vCam)) {

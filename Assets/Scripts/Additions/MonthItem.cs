@@ -9,40 +9,44 @@ public class MonthItem : IMonth
 {
     // [SerializeField] private List<GameObject> MonthItemList = new List<GameObject>();
     private Transform _playerMonth;
-   
-
-    public MonthItem(PlayerController playerController) 
+    Collider other;
+    public MonthItem(PlayerController playerController)
     {
         _playerMonth = playerController.GetComponent<PlayerController>()._monthPoint;
     }
 
+
+
     public override void GetItemToMonth(Collider other)
     {
-        if(other.name.Contains("Amulets") && MonthManager.Instance.MonthItemList.Count!=2)
+        if (other.name.Contains("Amulets") && MonthManager.Instance.MonthItemList.Count != 2)
         {
 
             var seq = DOTween.Sequence();
             seq.Kill();
-            if(!other.GetComponent<ItemController>())
+            if (!other.GetComponent<ItemController>())
             {
                 other.gameObject.AddComponent<ItemController>();
             }
-            other.GetComponent<Collider>().isTrigger = true;   
-             other.GetComponent<Rigidbody>().isKinematic = true;
+            other.GetComponent<Collider>().isTrigger = true;
+            other.GetComponent<Rigidbody>().isKinematic = true;
             seq = DOTween.Sequence();
-             MonthManager.Instance.MonthItemList.Add(other.gameObject);
-            Debug.Log( MonthManager.Instance.MonthItemList.Count);
-            seq.Append(other.transform.DOJump(new Vector3(_playerMonth.position.x,_playerMonth.position.y,_playerMonth.position.z), 2f, 1, 0.2f));
-           other.transform.parent = _playerMonth;
+            MonthManager.Instance.MonthItemList.Add(other.gameObject);
+            Debug.Log(MonthManager.Instance.MonthItemList.Count);
+            seq.Append(other.transform.DOJump(new Vector3(_playerMonth.position.x, _playerMonth.position.y, _playerMonth.position.z), 2f, 1, 0.2f));
+            other.transform.parent = _playerMonth;
             other.transform.GetComponentInChildren<ParticleSystem>().Play();
-            MonthManager.Instance.CanStart(true, 5f, other.gameObject);      
+            MonthManager.Instance.isTime = true;
+            MonthManager.Instance.StartCount(other);
+
 
         }
     }
-
    
 
-   
+
+
+
 
 
 }

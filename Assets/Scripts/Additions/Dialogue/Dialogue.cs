@@ -5,7 +5,7 @@ using TMPro;
 using CASP.SoundManager;
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI _text;
+    public TextMeshPro _text;
     public string[] _lines;
     public float _textSpeed;
     private int _index;

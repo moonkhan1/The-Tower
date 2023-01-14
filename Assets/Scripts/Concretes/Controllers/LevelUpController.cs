@@ -8,7 +8,7 @@ using DG.Tweening;
 public class LevelUpController : ILevelControl
 {
     private PlayerController _playerController;
-    public override event Action<int> isLeveltriggered;
+    // public override event Action<int> isLeveltriggered;
     public override event Action isFinishtriggered;
     public LevelUpController(PlayerController playerController)
     {
@@ -19,12 +19,13 @@ public class LevelUpController : ILevelControl
     {
         if (LevelUpManager.Instance.LevelTriggers.Any(u => u.name == other.name))
         {
-            isLeveltriggered?.Invoke(System.Convert.ToInt32(other.name.Substring(other.name.Length - 1)));
+            UIManager.Instance.StaminaUIs.SetActive(true);
             other.gameObject.SetActive(false);
             int index = LevelUpManager.Instance.LevelTriggers.FindIndex(a => a.name == other.name);
             foreach (var item in LevelUpManager.Instance.LevelDoors[index].GetComponentsInChildren<Transform>())
             {
-
+                if(index == 1)
+                    return;
                 item.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
             }
         }

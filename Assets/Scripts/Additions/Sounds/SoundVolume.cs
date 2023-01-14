@@ -8,6 +8,10 @@ public class SoundVolume : MonoBehaviour
     [SerializeField] Slider _musicVolume;
     [SerializeField] Slider _soundsVolume;
     [SerializeField] AudioSource _mainTheme;
+
+    private void Awake() {
+        DontDestroyOnLoad(this);
+    }
     void Start()
     {
         if (!PlayerPrefs.HasKey("musicVolume"))

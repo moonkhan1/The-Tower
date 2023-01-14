@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using CASP.SoundManager;
 public class MoveWithCharCont : IMover
 {
     private float rotationFactor = 8.0f;
@@ -19,14 +19,6 @@ public class MoveWithCharCont : IMover
     {
         // _characterController.Move(direction * Time.fixedDeltaTime * speed);
         rb.MovePosition(_transform.position + (direction * Time.fixedDeltaTime * speed));
-        // if (direction.magnitude > 0.01f)
-        //     {
-        //         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //         float angle = Mathf.SmoothDampAngle(_transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, SmoothTurnTime);
-        //         _transform.rotation = Quaternion.Euler(0f, angle, 0);
-
-        //         rb.MovePosition(_transform.position + (direction * speed * Time.deltaTime));
-        //     }
         
     }
     public void RunAction(Vector3 direction, float runSpeed)
