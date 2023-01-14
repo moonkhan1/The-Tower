@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using DG.Tweening;
-
+using UnityEngine.UI;
 public class LevelUpController : ILevelControl
 {
     private PlayerController _playerController;
@@ -19,12 +19,11 @@ public class LevelUpController : ILevelControl
     {
         if (LevelUpManager.Instance.LevelTriggers.Any(u => u.name == other.name))
         {
-            UIManager.Instance.StaminaUIs.SetActive(true);
             other.gameObject.SetActive(false);
             int index = LevelUpManager.Instance.LevelTriggers.FindIndex(a => a.name == other.name);
             foreach (var item in LevelUpManager.Instance.LevelDoors[index].GetComponentsInChildren<Transform>())
             {
-                if(index == 1)
+                if (item.gameObject == null)
                     return;
                 item.DOLocalRotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
             }
@@ -33,6 +32,15 @@ public class LevelUpController : ILevelControl
         {
             isFinishtriggered?.Invoke();
             UIManager.Instance.FinalMessage.SetActive(true);
+        }
+        if (LevelUpManager.Instance.LevelTriggers.Any(u => u.name == "Level1"))
+        {
+            UIManager.Instance.StaminaUIs.SetActive(true);
+            other.gameObject.SetActive(false);
+            Image panelImg = UIManager.Instance.StaminaUIs.GetComponent<Image>();
+            panelImg.color = new Color(0, 0, 0, 0);
+            DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 255), 0.8f);
+            UIManager.Instance.StaminaUIs.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
         }
     }
 }

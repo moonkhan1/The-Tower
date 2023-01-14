@@ -63,11 +63,11 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        
-            // _itemDropCount2 = _itemDropCount2 - Time.deltaTime;
-            // _itemHoldCount.text = System.Convert.ToInt32(_itemDropCount2).ToString();
-            //  HoldBar.fillAmount = (HoldBar.fillAmount -  0.001f );
-        
+
+        // _itemDropCount2 = _itemDropCount2 - Time.deltaTime;
+        // _itemHoldCount.text = System.Convert.ToInt32(_itemDropCount2).ToString();
+        //  HoldBar.fillAmount = (HoldBar.fillAmount -  0.001f );
+
 
 
     }
@@ -113,14 +113,15 @@ public class UIManager : MonoBehaviour
     }
     private void ItemDropControl(bool isTaken)
     {
-        if(isTaken)
-            HoldBar.fillAmount = (HoldBar.fillAmount - 0.002f );
+        if (isTaken)
+            HoldBar.fillAmount = (HoldBar.fillAmount - 0.002f);
         else
-            HoldBar.fillAmount = (HoldBar.fillAmount +  0.003f );
+            HoldBar.fillAmount = (HoldBar.fillAmount + 0.003f);
     }
     private void AngelDialogue()
     {
         Dialogue.SetActive(true);
+        
     }
 
     public void GameOverMethod()
@@ -196,7 +197,7 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit(0);
     }
- 
+
     // public void NextTip()
     // {
     //     _index++;
