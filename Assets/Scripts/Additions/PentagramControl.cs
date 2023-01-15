@@ -11,7 +11,7 @@ public class PentagramControl : MonoBehaviour
     void Start()
     {
 
-        _trasnsform.DORotate(new Vector3(0,0,-10), 0.6f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental);
+        _trasnsform.DORotate(new Vector3(0,0,-15), 0.6f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetRelative();
     }
 
     // Update is called once per frame

@@ -39,7 +39,7 @@ public class LevelUpController : ILevelControl
             UIManager.Instance.StaminaUIs.SetActive(true);
             Image panelImg = UIManager.Instance.StaminaUIs.GetComponent<Image>();
             panelImg.color = new Color(0, 0, 0, 0);
-            DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 255), 0.8f);
+            DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 0), 0.8f);
             UIManager.Instance.StaminaUIs.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
         }
     }

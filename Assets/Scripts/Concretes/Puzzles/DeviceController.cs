@@ -118,8 +118,7 @@ public class DeviceController : IDevice
                 player.DOJump(items.Key.transform.parent.position, 0.7f, 1, 0.2f);
                 if (playerDirection.z > 0 && !isPictureCorrect)
                 {
-                    
-                    // SoundManager.Instance.stoneRoll.Play();
+                // SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z - 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y - 3, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -127,7 +126,7 @@ public class DeviceController : IDevice
                 }
                 if (playerDirection.z < 0 && !isPictureCorrect)
                 {
-                    // SoundManager.Instance.stoneRoll.Play();
+                    // SoundManager.Instance.Play("StoneRoundSound");
                     items.Key.transform.DORotate(new Vector3(0, 0, items.Key.transform.rotation.z + 5), 0.1f, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental)
                     .SetRelative();
                     items.Value.transform.DORotate(new Vector3(0, items.Value.transform.rotation.y + 1, 0), 0.1f).SetLoops(-1, LoopType.Incremental)
@@ -135,6 +134,7 @@ public class DeviceController : IDevice
                 }
                 if (playerDirection.z == 0)
                 {
+                    // SoundManager.Instance.Stop("StoneRoundSound");
                     items.Key.transform.DOKill();
                     items.Value.transform.DOKill();
                 }
@@ -144,6 +144,7 @@ public class DeviceController : IDevice
                 System.Math.Truncate(Mathf.Abs(u.transform.localEulerAngles.y)) >= isRotationCorrect.eulerAngles.y - 4
                 && System.Math.Truncate(Mathf.Abs(u.transform.localEulerAngles.y)) <= isRotationCorrect.eulerAngles.y + 4)))
                 {
+                    // SoundManager.Instance.Stop("StoneRoundSound");
                     SoundManager.Instance.Play("StoneSolveSound");
                     Debug.Log("Correct");
                     isPictureCorrect = true;
@@ -154,6 +155,7 @@ public class DeviceController : IDevice
 
                 if (Input.GetKey(KeyCode.E))
                 {
+                    // SoundManager.Instance.Stop("StoneRoundSound");
                     items.Key.transform.DOKill();
                     items.Value.transform.DOKill();
                     player.DOJump(items.Key.transform.GetChild(0).position, 0.8f, 1, 0.4f);

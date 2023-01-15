@@ -43,45 +43,48 @@ public class EnemyController : MonoBehaviour
     {
         if (_playerController.GetComponent<PlayerController>().IsPlayerStop)
             _splineFollower.follow = false;
-            // _navMesh.isStopped = true;
+        // _navMesh.isStopped = true;
     }
 
 
-  void OnDrawGizmos() {
-    // public void CheckForPlayer()
-    // {
+    void OnDrawGizmos()
+    {
+        // public void CheckForPlayer()
+        // {
         RaycastHit hit;
-        if (Physics.SphereCast(_enemyTransform.position,_enemyTransform.lossyScale.x*8, _enemyTransform.forward, out hit, 25f,_layer))
+        if (Physics.SphereCast(_enemyTransform.position, _enemyTransform.lossyScale.x * 8, _enemyTransform.forward, out hit, 25f, _layer))
         {
             // if (Physics.CapsuleCast(_fireTransform.position,_fireTransforms2.position,16f,_fireTransform.TransformDirection(Vector3.forward), out hit, 25f, _layer))
             // {
-            Gizmos.color = new Color(32,32,32,0);
+            Gizmos.color = new Color(32, 32, 32, 0);
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * hit.distance);
-            Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x*8);
-            if (hit.transform.gameObject.layer == 6)
+            Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x * 8);
+            if (hit.transform.tag == "Player")
             {
                 // SoundManager.Instance._enemySound.Play();
-                 SoundManager.Instance._enemySound.Play();
+                SoundManager.Instance._enemySound.Play();
                 _navMesh.destination = _playerController.transform.position;
                 _navMesh.speed = 11;
                 _splineFollower.follow = false;
                 _enemyTransform.GetComponentInChildren<ParticleSystem>().Play();
-                
+
             }
 
         }
         else
         {
-            Gizmos.color = new Color(32,32,32,0);
+            Gizmos.color = new Color(32, 32, 32, 0);
             Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
-            // _splineFollower.follow = true;
             _enemyTransform.GetComponentInChildren<ParticleSystem>().Stop();
+
+            // _splineFollower.follow = true;
             // SoundManager.Instance._enemySound.Stop();
             if (!_splineFollower.follow)
             {
+
                 _navMesh.destination = _splineFollower.spline.position;
                 _enemyTransform.LookAt(_splineFollower.spline.GetPointPosition(0));
-                _enemyTransform.DOMove(new Vector3(_splineFollower.spline.GetPointPosition(0).x, _splineFollower.spline.GetPointPosition(0).y, _splineFollower.spline.GetPointPosition(0).z), 2.5f)
+                _enemyTransform.DOMove(new Vector3(_splineFollower.spline.GetPointPosition(0).x, _splineFollower.spline.GetPointPosition(0).y, _splineFollower.spline.GetPointPosition(0).z), 2f)
                 .OnComplete(() =>
                 {
 
@@ -89,11 +92,17 @@ public class EnemyController : MonoBehaviour
                     _navMesh.speed = 8;
                     _splineFollower.Restart(0);
                 });
-
             }
 
         }
     }
+
+    // IEnumerator WaitAndGoBack()
+    // {
+    //     yield return new WaitForSeconds(2f);
+
+
+    // }
 }
 
 
