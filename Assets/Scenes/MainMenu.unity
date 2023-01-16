@@ -166,12 +166,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1411102127}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 506, y: -462}
-  m_SizeDelta: {x: 473.4739, y: 77.9039}
+  m_AnchoredPosition: {x: 510, y: -464}
+  m_SizeDelta: {x: 422.6733, y: 54.9628}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92348932
 MonoBehaviour:
@@ -305,12 +305,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.2
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
-  m_fontSizeMax: 100
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -364,43 +364,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.518
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.518
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894827644345, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.518
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894827644345, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.655
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.655
       objectReference: {fileID: 0}
     - target: {fileID: 4714814895125407835, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814895125407835, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814895210761548, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_Pivot.x
@@ -498,30 +498,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2118171955}
-    - target: {fileID: 4714814895282648548, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseSettings
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814895282648548, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 4714814895290487233, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1791351241}
-    - target: {fileID: 4714814895290487233, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeVolumeofSounds
-      objectReference: {fileID: 0}
     - target: {fileID: 4714814895668483671, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1791351241}
-    - target: {fileID: 4714814895668483671, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeVolumeofMusic
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
 --- !u!224 &113287943 stripped
@@ -714,7 +698,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1411102127}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -851,7 +835,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1411102127}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1073,7 +1057,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1411102127}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1283,7 +1267,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1411102127}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1502,12 +1486,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 113287943}
   - {fileID: 862831022}
   - {fileID: 927600114}
   - {fileID: 1239911893}
   - {fileID: 1157746975}
   - {fileID: 92348931}
+  - {fileID: 113287943}
   m_Father: {fileID: 1646780148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
