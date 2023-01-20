@@ -33,6 +33,7 @@ public class Dialogue : MonoBehaviour
         _index = 0;
          SoundManager.Instance.Play("AngelVoice");
         StartCoroutine(TypeLine());
+        UIManager.Instance.AngleQuestionMark.GetComponent<ParticleSystem>().Stop();
     }
 
     private void NextLine()
@@ -48,6 +49,8 @@ public class Dialogue : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
+            // UIManager.Instance.QuestManager(true);
+            
         }
     }
 

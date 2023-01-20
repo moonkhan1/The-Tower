@@ -49,6 +49,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Image HoldBar;
     [SerializeField] public GameObject StaminaUIs;
 
+    [Header("Angel")]
+    [SerializeField] public GameObject Quest;
+    [SerializeField] public GameObject AngleQuestionMark;
+
     // [SerializeField] GameObject _backGround;
 
 
@@ -121,7 +125,7 @@ public class UIManager : MonoBehaviour
     private void AngelDialogue()
     {
         Dialogue.SetActive(true);
-        
+
     }
 
     public void GameOverMethod()
@@ -196,6 +200,15 @@ public class UIManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit(0);
+    }
+
+    public void QuestManager(bool isActive)
+    {
+        Quest.SetActive(isActive);
+        Image panelImg = PausePanel.GetComponent<Image>();
+        panelImg.color = new Color(0, 0, 0, 0);
+        DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 255), 0.2f);
+        Quest.transform.DOScale(new Vector3(0.86f, 0.86f, 0.86f), 0.7f);
     }
 
     // public void NextTip()

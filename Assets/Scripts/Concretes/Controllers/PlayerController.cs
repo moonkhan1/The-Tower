@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
-using System;
+// using System;
 using CASP.CameraManager;
 using CASP.SoundManager;
 public class PlayerController : MonoBehaviour
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         isStop = true;
     }
 
-   
+
 
     private void isPicCorrect()
     {
@@ -199,7 +199,11 @@ public class PlayerController : MonoBehaviour
         {
             // _animation.JumpAnimation(true);
             _animation._animator.SetBool(isJumpingHash, true);
-            SoundManager.Instance.Play("CatJump");
+            int a = Random.Range(0, 3);
+            if (a == 2)
+            {
+                SoundManager.Instance.Play("CatJump");
+            }
             isJumpAnimating = true;
             isJump = true;
             _jumper.Jump(_inputs.isJumpPressed, _jumpForce);
