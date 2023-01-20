@@ -44,9 +44,9 @@ namespace PuzzlePlatformer.States
             return null;
         }
 
-        public void AddState(IState to, IState from, System.Func<bool> condition)
+        public void AddState(IState from,IState to, System.Func<bool> condition)
         {
-            StateTransformer stateTransformer = new StateTransformer(to, from, condition);
+            StateTransformer stateTransformer = new StateTransformer(from, to, condition);
             _stateTransformers.Add(stateTransformer);
         }
 
