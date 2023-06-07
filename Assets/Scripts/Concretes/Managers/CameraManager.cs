@@ -14,7 +14,7 @@ namespace CASP.CameraManager
 
         [SerializeField] public CinemachineBrain Brain;
         [SerializeField] public Camera MainCamera;
-        // [SerializeField] List<CinemachineVirtualCamera> VCamList;
+        [SerializeField] private PlayerController _playerController;
         Dictionary<string, CinemachineVirtualCamera> Cams = new Dictionary<string, CinemachineVirtualCamera>();
         [SerializeField] List<StructCam> Camslist;
         [SerializeField] public CinemachineVirtualCamera EnteranceCamera;
@@ -30,6 +30,8 @@ namespace CASP.CameraManager
             {
                 EnteranceCamera.transform.DOMoveZ(EnteranceCamera.transform.position.z + 45, 1f).OnComplete(()=>{
                     OpenCamera(EnteranceCatCamera.name, 0.8f, CameraEaseStates.EaseIn);
+                    SetFollow(EnteranceCatCamera.name, _playerController.transform);
+                    SetLookAt(EnteranceCatCamera.name, _playerController.transform);
                 });
             });
             foreach (Transform camTransform in transform)

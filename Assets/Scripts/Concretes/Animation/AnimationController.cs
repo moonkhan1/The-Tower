@@ -20,11 +20,11 @@ public class AnimationController : IAnimation
         if(isWalking)
         {
             _animator.SetBool("Walking", true);
-            SoundManager.Instance.catStand.Play();
+            SoundManager.Instance.catIdle.Play();
         }
         else{
             _animator.SetBool("Walking", false);
-            SoundManager.Instance.catWalk.Play();
+            //SoundManager.Instance.catWalk.Play();
            
         }
 
@@ -36,11 +36,11 @@ public class AnimationController : IAnimation
         if(isRunning)
         {
             _animator.SetBool("isRunning", true);
-             SoundManager.Instance.catWalk.Stop();
+             //SoundManager.Instance.catWalk.Stop();
         }
         else{
             _animator.SetBool("isRunning", false);
-             SoundManager.Instance.catRun.Play();
+             //SoundManager.Instance.catRun.Play();
         }
     }
 
@@ -50,12 +50,10 @@ public class AnimationController : IAnimation
         if(isJumping)
         {
             _animator.SetBool("Jump", true);
-            Debug.Log("True Jump");
         }
         else
         {
             _animator.SetBool("Jump", false);
-            Debug.Log("False Jump");
         }
     }
 

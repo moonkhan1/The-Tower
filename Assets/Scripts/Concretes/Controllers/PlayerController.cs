@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private ILevelControl _levelControl;
     [SerializeField] private float _speed = 12f;
     [SerializeField] private float _runSpeed = 23f;
-    [SerializeField] public Transform _monthPoint;
 
     // JUMP PROPS
     private float _gravity = -9.81f;
@@ -36,6 +35,9 @@ public class PlayerController : MonoBehaviour
     bool isJumpAnimating = false;
     bool isJump = false;
     private bool isStop = false;
+    
+    [SerializeField] public Transform _monthPoint;
+    public Vector3 Direction => _direction;
     public bool IsPlayerStop => isStop;
     public event System.Action<int> IsJumpedAction;
     public event System.Action isPlayerDead;
@@ -78,47 +80,39 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        if (!isStop)
-        {
-            _direction = _inputs.Direction;
-            HandleGravity();
-            HandleJump();
-            HandleMove();
-            Debug.Log(LevelTwoPic);
-        }
+        if (isStop) return;
+        _direction = _inputs.Direction;
+        HandleGravity();
+        HandleJump();
+        HandleMove();
 
     }
 
     private void FixedUpdate()
     {
-        if (!isStop)
-        {
-            _mover.MoveAction(CameraRelativeMove, _speed);
-            _animation.MoveAnimation(_inputs.isMovingPressed);
-            _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
-            if (_inputs.isRunPressed)
-            {
-                if (UIManager.Instance.RunBar.fillAmount > 0.05f)
-                {
-
-                    isRunning?.Invoke(true);
-                    _mover.RunAction(CameraRelativeMove, _runSpeed);
-                    _animation.RunAnimation(true);
-
-                }
-                if (UIManager.Instance.RunBar.fillAmount < 0.05f)
-                    _animation.RunAnimation(false);
-            }
-            else
-            {
-                _animation.RunAnimation(false);
-                isRunning?.Invoke(false);
-            }
-
-
-
-        }
+        if (isStop) return;
+        _mover.MoveAction(CameraRelativeMove, _speed);
+         _animation.MoveAnimation(_inputs.isMovingPressed);
+         _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
+         if (_inputs.isRunPressed && _inputs.isMovingPressed && !isJump)
+         {
+             switch (UIManager.Instance.RunBar.fillAmount)
+             {
+                 case > 0.05f:
+                     isRunning?.Invoke(true);
+                     _mover.RunAction(CameraRelativeMove, _runSpeed);
+                     _animation.RunAnimation(true);
+                     break;
+                 case < 0.05f:
+                     _animation.RunAnimation(false);
+                     break;
+             }
+         }
+         else
+         {
+             _animation.RunAnimation(false);
+             isRunning?.Invoke(false);
+         }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -135,24 +129,22 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         _month.GetItemToMonth(other.collider);
-        if (other.gameObject.tag == "Ground")
+        switch (other.gameObject.tag)
         {
-
-            isGrounded = true;
-        }
-        if (other.gameObject.tag == "Enemy")
-        {
-            SoundManager.Instance.Play("CatSeen");
-            isPlayerDead?.Invoke();
-            isStop = true;
-            SoundManager.Instance.Play("Death");
-
+            case "Ground":
+                isGrounded = true;
+                break;
+            case "Enemy":
+                SoundManager.Instance.Play("CatSeen");
+                isPlayerDead?.Invoke();
+                isStop = true;
+                SoundManager.Instance.Play("Death");
+                break;
         }
     }
 
     private void OnCollisionStay(Collision other)
     {
-        Debug.Log("Puzzle2");
         _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider, Quaternion.Euler(0f, 90f, 0f));
 
     }
@@ -170,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void HandleMove()
+    private void HandleMove()
     {
         Vector3 ForwardRelativeToCamera = Camera.main.transform.forward;
         Vector3 RightRelativeToCamera = Camera.main.transform.right;
@@ -218,7 +210,7 @@ public class PlayerController : MonoBehaviour
     private void HandleGravity()
     {
         bool isFalling = _direction.y <= 0.0f || _inputs.isJumpPressed;
-        float fallMultipl = 2.0f;
+        const float fallMultipl = 2.0f;
         if (isGrounded)
         {
             if (isJumpAnimating)

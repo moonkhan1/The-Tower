@@ -33,7 +33,6 @@ namespace PuzzlePlatformer.States.EnemyState
             if (!_target.IsPlayerStop)
             {
                 _splineFollower.follow = true;
-                Debug.Log(_target.IsPlayerStop);
             }
             else
                 _splineFollower.follow = false;

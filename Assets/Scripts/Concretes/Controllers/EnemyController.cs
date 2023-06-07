@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,18 +53,19 @@ public class EnemyController : MonoBehaviour, IEnemy
         _stateMachine.StateControl();
     }
 
+    private void FixedUpdate()
+    {
+        DetectPlayer();
+    }
 
-    void OnDrawGizmos()
+    private void DetectPlayer()
     {
 
         RaycastHit hit;
-        if (Physics.SphereCast(_enemyTransform.position, _enemyTransform.lossyScale.x * 8, _enemyTransform.forward, out hit, 25f, _layer))
+        float interactionDistance = 25f;
+        if (Physics.SphereCast(_enemyTransform.position, _enemyTransform.lossyScale.x * 8, _enemyTransform.forward, out hit, interactionDistance, _layer))
         {
-            
-            Gizmos.color = new Color(32, 32, 32, 0);
-            Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * hit.distance);
-            Gizmos.DrawWireSphere(_fireTransform.position + _fireTransform.forward * hit.distance, _enemyTransform.lossyScale.x * 8);
-            if (hit.transform.tag == "Player")
+            if (hit.transform.TryGetComponent(out PlayerController player))
             {
                 isFollowingPlayer = true;
             }
@@ -71,9 +73,6 @@ public class EnemyController : MonoBehaviour, IEnemy
         }
         else
         {
-            
-            Gizmos.color = new Color(32, 32, 32, 0);
-            Gizmos.DrawRay(_fireTransform.position, _fireTransform.forward * 25f);
             if (isFollowingPlayer)
             {
 

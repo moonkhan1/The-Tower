@@ -10,8 +10,7 @@ public class DeviceManager : MonoBehaviour
     public Dictionary<GameObject, GameObject> itemsDevices;
 
     /*LEVEL 1*/
-    public int Level1AmuletCount = 0;
-    
+    public List<Transform> LevelOneSolvedAmulets; 
 
     /*LEVEL 2*/
     [SerializeField] public GameObject Level2Platforms;

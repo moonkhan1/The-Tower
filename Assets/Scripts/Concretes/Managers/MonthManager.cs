@@ -48,10 +48,9 @@ public class MonthManager : MonoBehaviour
         StopCoroutine(WaitBeforeDrop(other));
     }
 
-     public IEnumerator WaitBeforeDrop(Collider other)
+    private IEnumerator WaitBeforeDrop(Collider other)
     {
         yield return new WaitUntil(() => UIManager.Instance.HoldBar.fillAmount == 0f);
-            Debug.Log("Drop time");
             other.GetComponent<Collider>().isTrigger = false;
             other.GetComponent<Rigidbody>().isKinematic = false;
             MonthManager.Instance.MonthItemList.Remove(other.gameObject);

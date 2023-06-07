@@ -19,7 +19,7 @@ public class MoveWithCharCont : IMover
     {
         // _characterController.Move(direction * Time.fixedDeltaTime * speed);
         rb.MovePosition(_transform.position + (direction * Time.fixedDeltaTime * speed));
-        
+
     }
     public void RunAction(Vector3 direction, float runSpeed)
     {

@@ -9,11 +9,10 @@ namespace CASP.SoundManager
     {
         public Sounds[] sounds;
         public static SoundManager Instance;
+        public float Volume { get; private set; } = 1f;
         [SerializeField] public AudioSource _enemySound;
-        [SerializeField] public AudioSource catRun;
-        [SerializeField] public AudioSource catWalk;
-        [SerializeField] public AudioSource catStand;
         [SerializeField] public AudioSource stoneRoll;
+        [SerializeField] public AudioSource catIdle;
         private void Awake() {
             if (Instance == null) {
                 Instance = this;
@@ -48,6 +47,17 @@ namespace CASP.SoundManager
             // For completely play all sounds without cutting some last of sounds
             s.source.mute = false;
             s.source.PlayOneShot(s.Clip);
+        }
+
+        public void PlaySound(string name, Vector3 position, float volume)
+        {
+            Sounds s = System.Array.Find(sounds, sound => sound.Name == name);
+            PlaySound(s.Clip, position, volume);
+        }
+        
+        private void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplayer = 1f)
+        {
+            AudioSource.PlayClipAtPoint(audioClip, position, volumeMultiplayer * Volume);
         }
         public void Stop(string name) {
             Sounds s = System.Array.Find(sounds, sound => sound.Name == name);

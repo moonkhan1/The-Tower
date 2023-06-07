@@ -65,16 +65,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-        // _itemDropCount2 = _itemDropCount2 - Time.deltaTime;
-        // _itemHoldCount.text = System.Convert.ToInt32(_itemDropCount2).ToString();
-        //  HoldBar.fillAmount = (HoldBar.fillAmount -  0.001f );
-
-
-
-    }
     private void OnEnable()
     {
         if (_playerController == null) return;
@@ -83,12 +73,11 @@ public class UIManager : MonoBehaviour
         _playerController.GetComponent<PlayerController>().isPlayerDead += GameOverMethod;
         _playerController.GetComponent<PlayerController>().isRunning += RunBarControl;
         MonthManager.Instance.isItemTaken += ItemDropControl;
-        GameManager.Instance.PauseMenu += OpenPause;
-        GameManager.Instance.PauseMenu += ClosePause;
+        GameManager.Instance.OnGamePaused += OpenPause;
+        GameManager.Instance.OnGameUnPaused += ClosePause;
+        GameManager.Instance.OnGameUnPaused += CloseSettings;
 
     }
-
-
 
     private void OnDisable()
     {
@@ -98,8 +87,9 @@ public class UIManager : MonoBehaviour
         _playerController.GetComponent<PlayerController>().isPlayerDead -= GameOverMethod;
         _playerController.GetComponent<PlayerController>().isRunning -= RunBarControl;
         MonthManager.Instance.isItemTaken -= ItemDropControl;
-        GameManager.Instance.PauseMenu -= OpenPause;
-        GameManager.Instance.PauseMenu -= ClosePause;
+        GameManager.Instance.OnGamePaused -= OpenPause;
+        GameManager.Instance.OnGameUnPaused -= ClosePause;
+        GameManager.Instance.OnGameUnPaused -= CloseSettings;
 
     }
 
@@ -127,7 +117,6 @@ public class UIManager : MonoBehaviour
         Dialogue.SetActive(true);
 
     }
-
     public void GameOverMethod()
     {
         GameOverPanel.SetActive(true);
@@ -139,68 +128,43 @@ public class UIManager : MonoBehaviour
         GameOverUIPanel.transform.DOScale(new Vector3(0.25f, 0.25f, 0.25f), 0.2f);
     }
 
-    public void OpenPause(int pause)
+    private void OpenPause()
     {
-        if (pause == 0)
-        {
-            PausePanel.SetActive(true);
-            Image panelImg = PausePanel.GetComponent<Image>();
-            panelImg.color = new Color(0, 0, 0, 0);
-            DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(32, 32, 32, 235), 0.2f);
-            PausePanel.transform.DOScale(new Vector3(21.65f, 11.92f, 20.35f), 0.2f);
-        }
+        PausePanel.SetActive(true);
     }
-    public void ClosePause(int pause)
+
+    private void ClosePause()
     {
-        if (pause == 1)
-        {
-            Image panelImg = PausePanel.GetComponent<Image>();
-            DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(32, 32, 32, 0), 0.2f);
-            PausePanel.transform.DOScale(0f, 0.2f).OnComplete(() =>
-            {
-                PausePanel.SetActive(false);
-            });
-        }
+        PausePanel.SetActive(false);
+        SettingsPanel.SetActive(false);
     }
 
     public void OpenSettings()
     {
-
         SettingsPanel.SetActive(true);
         PauseMenuItems.ToList().ForEach(x => x.GetComponent<TextMeshProUGUI>().enabled = false);
-        Image panelImg = SettingsPanel.GetComponent<Image>();
-        panelImg.color = new Color(0, 0, 0, 0);
-        DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 0), 0.2f).SetUpdate(true);
-        SettingsPanel.transform.DOScale(new Vector3(5.63f, 5.63f, 5.63f), 0.2f).SetUpdate(true);
+        
 
     }
     public void CloseSettings()
     {
-
-        Image panelImg = SettingsPanel.GetComponent<Image>();
-        DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 0), 0.2f).SetUpdate(true);
-        SettingsPanel.transform.DOScale(0f, 0.2f).SetUpdate(true).OnComplete(() =>
-        {
-            SettingsPanel.SetActive(false);
-            PauseMenuItems.ToList().ForEach(x => x.GetComponent<TextMeshProUGUI>().enabled = true);
-        });
-
+        SettingsPanel.SetActive(false);
+        PauseMenuItems.ToList().ForEach(x => x.GetComponent<TextMeshProUGUI>().enabled = true);
     }
 
     public void RestartMethod()
     {
         GameManager.Instance.LoadScene("Game");
+        Time.timeScale = 1f;
     }
 
     public void LoadMainMenu()
     {
         GameManager.Instance.LoadScene("MainMenu");
+        Time.timeScale = 1f;
     }
 
-    public void Quit()
-    {
-        Application.Quit(0);
-    }
+
 
     public void QuestManager(bool isActive)
     {

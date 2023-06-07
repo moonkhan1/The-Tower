@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CASP.SoundManager;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public event System.Action<int> PauseMenu;
-    int pauseCount = 0;
+    public event System.Action OnGamePaused;
+    public event System.Action OnGameUnPaused;
+    private bool IsGamePause = false;
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-        DontDestroyOnLoad(this);
+
+        //DontDestroyOnLoad(this);
     }
 
     void Update()
@@ -22,6 +26,7 @@ public class GameManager : MonoBehaviour
         OpenPauseMenu();
 
     }
+
     public void LoadScene(string name)
     {
         StartCoroutine(LoadLevel(name));
@@ -32,30 +37,27 @@ public class GameManager : MonoBehaviour
         yield return SceneManager.LoadSceneAsync(name);
     }
 
-    public void OpenPauseMenu()
+    private void OpenPauseMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseMenu?.Invoke(pauseCount);
-            if(pauseCount == 0)
+            IsGamePause = !IsGamePause;
+            if (IsGamePause)
             {
-                StartCoroutine(WaitForTimeScale(0));
-                pauseCount++;
+                OnGamePaused?.Invoke();
+                Time.timeScale = 0;
             }
             else
             {
-                Time.timeScale = 1;
-                pauseCount--;
+                OnGameUnPaused?.Invoke();
+                Time.timeScale = 1f;
             }
         }
-        // StopAllCoroutines();
     }
-    IEnumerator WaitForTimeScale(int index)
+
+    public void Quit()
     {
-        
-        yield return new WaitForSecondsRealtime(0.5f);
-        Time.timeScale = index;
-        
-        
+        Application.Quit(0);
     }
 }
+    
