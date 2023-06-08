@@ -47,7 +47,7 @@ public class MoveWithCharCont : IMover
     {
         LayerMask wallLayer = 8;
         const float maxHitDistance = 2f;
-        const float jumpBackForce = 1f;
+        const float jumpBackForce = 2f;
         if (Physics.Raycast(rayPoint.position, _transform.forward, out var hit, maxHitDistance))
         {
             if (hit.transform.gameObject.layer == wallLayer)
