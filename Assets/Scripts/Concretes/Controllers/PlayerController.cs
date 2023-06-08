@@ -6,6 +6,7 @@ using DG.Tweening;
 // using System;
 using CASP.CameraManager;
 using CASP.SoundManager;
+
 public class PlayerController : MonoBehaviour
 {
     // private Transform _transform;
@@ -36,7 +37,9 @@ public class PlayerController : MonoBehaviour
     bool isJump = false;
     private bool isStop = false;
     
+
     [SerializeField] public Transform _monthPoint;
+    [SerializeField] public Transform _rayPoint;
     public Vector3 Direction => _direction;
     public bool IsPlayerStop => isStop;
     public event System.Action<int> IsJumpedAction;
@@ -70,6 +73,7 @@ public class PlayerController : MonoBehaviour
         _devices.isPicTriggered += isPicCorrect;
         _levelControl.isFinishtriggered += Finished;
     }
+
     private void OnDisable()
     {
         _devices.isPicTriggered -= isPicCorrect;
@@ -91,29 +95,30 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (isStop) return;
-        _mover.MoveAction(CameraRelativeMove, _speed);
-         _animation.MoveAnimation(_inputs.isMovingPressed);
-         _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
-         if (_inputs.isRunPressed && _inputs.isMovingPressed && !isJump)
-         {
-             switch (UIManager.Instance.RunBar.fillAmount)
-             {
-                 case > 0.05f:
-                     isRunning?.Invoke(true);
-                     _mover.RunAction(CameraRelativeMove, _runSpeed);
-                     _animation.RunAnimation(true);
-                     break;
-                 case < 0.05f:
-                     _animation.RunAnimation(false);
-                     break;
-             }
-         }
-         else
-         {
-             _animation.RunAnimation(false);
-             isRunning?.Invoke(false);
-         }
+        _mover.MoveAction(CameraRelativeMove, _speed, _rayPoint);
+        _animation.MoveAnimation(_inputs.isMovingPressed);
+        _mover.HandleRotation(CameraRelativeMove, _inputs.isMovingPressed);
+        if (_inputs.isRunPressed && _inputs.isMovingPressed && !isJump)
+        {
+            switch (UIManager.Instance.RunBar.fillAmount)
+            {
+                case > 0.05f:
+                    isRunning?.Invoke(true);
+                    _mover.RunAction(CameraRelativeMove, _runSpeed, _rayPoint);
+                    _animation.RunAnimation(true);
+                    break;
+                case < 0.05f:
+                    _animation.RunAnimation(false);
+                    break;
+            }
+        }
+        else
+        {
+            _animation.RunAnimation(false);
+            isRunning?.Invoke(false);
+        }
     }
+
     private void OnTriggerEnter(Collider other)
     {
 
@@ -145,9 +150,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider, Quaternion.Euler(0f, 90f, 0f));
+        _devices.WhenTriggerInteractable(this.transform, CameraRelativeMove, other.collider,
+            Quaternion.Euler(0f, 90f, 0f));
 
     }
+
     private void Finished()
     {
         isStop = true;
@@ -196,6 +203,7 @@ public class PlayerController : MonoBehaviour
             {
                 SoundManager.Instance.Play("CatJump");
             }
+
             isJumpAnimating = true;
             isJump = true;
             _jumper.Jump(_inputs.isJumpPressed, _jumpForce);
@@ -239,7 +247,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
-
+    
 }

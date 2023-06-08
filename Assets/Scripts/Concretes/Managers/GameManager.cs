@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void OpenPauseMenu()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InputReader.Instance.isPausePressed)
         {
             IsGamePause = !IsGamePause;
             if (IsGamePause)

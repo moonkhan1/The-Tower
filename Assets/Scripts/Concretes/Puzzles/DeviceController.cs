@@ -142,7 +142,7 @@ public class DeviceController : IDevice
                     isPicTriggered?.Invoke();
                 }
 
-                if (Input.GetKey(KeyCode.E))
+                if (InputReader.Instance.isInteractionPressed)
                 {
                     // SoundManager.Instance.Stop("StoneRoundSound");
                     items.Key.transform.DOKill();
