@@ -14,14 +14,17 @@ public class InputReader : MonoBehaviour, IInputReader
     public bool isJumpPressed {get; private set;}
     public bool isPausePressed {get; private set;}
     public bool isInteractionPressed {get; private set;}
+    public bool isInteractionPressedOneTime {get; private set;}
     public bool isMovingPressed{get; private set;}
 
     public bool isRunPressed {get; private set;}
+
 
     private PlayerInput _playerInput;
     private Inputs _inputs;
     
     int _pauseIndex;
+    int _interactionOneTimeIndex;
 
     public enum Bindings
     {
@@ -62,6 +65,9 @@ public class InputReader : MonoBehaviour, IInputReader
         _inputs.Player.Interaction.started += Interaction;
         _inputs.Player.Interaction.performed += Interaction;
         _inputs.Player.Interaction.canceled += Interaction;
+        _inputs.Player.Interaction.started += InteractionOneTime;
+        _inputs.Player.Interaction.performed += InteractionOneTime;
+        _inputs.Player.Interaction.canceled += InteractionOneTime;
     }
 
     
@@ -81,6 +87,9 @@ public class InputReader : MonoBehaviour, IInputReader
      _inputs.Player.Interaction.started -= Interaction;
      _inputs.Player.Interaction.performed -= Interaction;
      _inputs.Player.Interaction.canceled -= Interaction;
+     _inputs.Player.Interaction.started -= InteractionOneTime;
+     _inputs.Player.Interaction.performed -= InteractionOneTime;
+     _inputs.Player.Interaction.canceled -= InteractionOneTime;
      _inputs.Dispose();
     }
 
@@ -107,6 +116,13 @@ public class InputReader : MonoBehaviour, IInputReader
     {
      isInteractionPressed = context.ReadValueAsButton();
     }
+    
+    private void InteractionOneTime(InputAction.CallbackContext context)
+    {
+     if (isInteractionPressedOneTime && context.action.triggered) return; 
+     
+     StartCoroutine(WaitFrameForInteractionOneTime());
+    }
     private void Run(InputAction.CallbackContext context)
    {
     isRunPressed = context.ReadValueAsButton();
@@ -118,6 +134,13 @@ public class InputReader : MonoBehaviour, IInputReader
      yield return new WaitForEndOfFrame();
      isPausePressed = false;
      _pauseIndex ++;
+    }
+    IEnumerator WaitFrameForInteractionOneTime()
+    {
+     isInteractionPressedOneTime = true && _interactionOneTimeIndex % 2 == 0;
+     yield return new WaitForEndOfFrame();
+     isInteractionPressedOneTime = false;
+     _interactionOneTimeIndex ++;
     }
     public string GetBindingText(Bindings bindings)
     {

@@ -15,7 +15,7 @@ public class Dialogue : MonoBehaviour
         StartDialogue();
     }
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(InputReader.Instance.isInteractionPressedOneTime)
         {
             if(_text.text == _lines[_index])
             {
