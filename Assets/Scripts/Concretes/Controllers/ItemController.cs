@@ -9,6 +9,7 @@ public class ItemController : MonoBehaviour
     Collider _collider;
     Rigidbody _rb;
     Transform _transform;
+    
 
     private void Awake()
     {

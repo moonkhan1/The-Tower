@@ -65,7 +65,7 @@ public class MainMenuManager : MonoBehaviour
         _menuItems.ToList().ForEach(x => x.GetComponent<TextMeshProUGUI>().enabled = false);
         Image panelImg = SettingsPanel.GetComponent<Image>();
         panelImg.color = new Color(0, 0, 0, 0);
-        DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(255, 255, 255, 0), 0.2f);
+        DOTween.To(() => panelImg.color, x => panelImg.color = x, new Color32(75, 0, 255, 109), 0.2f);
         SettingsPanel.transform.DOScale(new Vector3(5.63f, 5.63f, 5.63f), 0.2f);
 
     }

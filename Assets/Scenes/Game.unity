@@ -24241,7 +24241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450651836494039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30920,7 +30920,7 @@ GameObject:
   - component: {fileID: 8770061942226268096}
   - component: {fileID: 9078418036087615007}
   - component: {fileID: 9078418036087615008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dver.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33252,7 +33252,7 @@ GameObject:
   - component: {fileID: 4083902274420438862}
   - component: {fileID: 5381553049643891831}
   - component: {fileID: 9095636285840270771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dver
   m_TagString: Untagged
   m_Icon: {fileID: 0}

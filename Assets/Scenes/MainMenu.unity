@@ -333,46 +333,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1411102127}
     m_Modifications:
-    - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894405922108, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894827644345, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.518
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894827644345, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.655
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814894911175350, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.655
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814895125407835, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4714814895125407835, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4714814895210761548, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -461,9 +421,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 4714814895210761549, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 4714814895210761551, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
+      propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714814895210761551, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714814895210761551, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714814895210761551, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714814895282648548, guid: c017704f09116da47b5eb46ea96e15ab, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

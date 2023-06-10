@@ -10,7 +10,6 @@ public class DeviceController : IDevice
     [SerializeField] Transform _movePosition;
     private PlayerController _playerController;
     private ItemController _itemController;
-    private bool IsMosaicPuzzleSolved = false;
     public override event System.Action isPicTriggered;
     
 
@@ -55,49 +54,49 @@ public class DeviceController : IDevice
     {
         var levelOneSolvedAmulets = DeviceManager.Instance.LevelOneSolvedAmulets;
         var itemsDevices = DeviceManager.Instance.itemsDevices;
+        
         foreach (KeyValuePair<GameObject, GameObject> items in itemsDevices)
         {
             if (amuletPlatform.name == items.Key.name && items.Key.name.Contains("Amulet"))
             {
+                Debug.Log(levelOneSolvedAmulets.Count);
                 if (amulet.transform.parent == null)
                 {
                     if (amulet.CompareTag(items.Key.tag))
                     {
                         levelOneSolvedAmulets.Add(amulet);
-                        Debug.Log(levelOneSolvedAmulets);
                     }
 
-                    Debug.Log(levelOneSolvedAmulets.Count);
                     amulet.DOJump(amuletPlatform.transform.GetChild(0).position, 0.7f, 1, 0.6f).OnComplete(() =>
                     {
                         amulet.rotation = amuletPlatform.transform.GetChild(0).rotation;
                         SoundManager.Instance.Play("Amulet");
                     });
                 }
+
                 if (amulet.transform.parent != null && amulet.CompareTag(items.Key.tag))
                 {
                     levelOneSolvedAmulets.Remove(amulet);
-                    Debug.Log(levelOneSolvedAmulets);
                 }
-
-                if (levelOneSolvedAmulets.Count == 3 && !IsMosaicPuzzleSolved)
+                if (levelOneSolvedAmulets.Count == 3)
                 {
                     foreach (var item in itemsDevices.Where(u => u.Key.name.Contains("Amulet")))
                     {
-                        item.Value.transform.DOMoveX(item.Value.transform.GetChild(0).position.x, 2f);
-                        IsMosaicPuzzleSolved = true;
+                        item.Value.transform.DOMoveX(item.Value.transform.GetChild(0).position.x, 2f)
+                            .OnComplete(()=>
+                        {
+                            item.Key.name = "Solved";
+                        });
                         SoundManager.Instance.Play("Magic");
                         item.Key.transform.GetComponentInChildren<ParticleSystem>().Play();
                         item.Value.transform.GetComponentInChildren<ParticleSystem>().Play();
                     }
-
                 }
             }
-
+            
         }
     }
-
-
+    
     public override void WhenTriggerInteractable(Transform player, Vector3 playerDirection, Collider other, Quaternion isRotationCorrect)
     {
         foreach (KeyValuePair<GameObject, GameObject> items in DeviceManager.Instance.itemsDevices)
